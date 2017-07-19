@@ -1,6 +1,8 @@
 ConfigASDK.ps1
+==============
 
 Description
+-----------
 
     The purpose of this script is to automate as much as possible post deployment tasks in Azure Stack Development Kit
     This include :
@@ -13,6 +15,7 @@ Description
         - AppService Resource Provider sources download
 
 Instructions
+------------
 
 	Login as your service adminstrator on your ASDK host.
 	Edit the script and set the proper value to the following variables :
@@ -24,12 +27,14 @@ Instructions
 		$azureRegAccountId = "YOUR_AZURE_SERVICE_ADMIN"              # your Azure Global Administrator account ID for registration
 		$azureDirectoryTenantName = "YOUR_AAD_TENANT_NAME"           # your Azure Tenant Directory Name for Azure Stack 
 		
-	Open an elevated powershell window and run the script using -AAD parameter if you are using Azure AD otherwise the script will assume this is an ADFS deployment. If you want to also register your installation in order to enable telemtry and market place syndication add the -Register parameter.
+	Open an elevated powershell window and run the script using -AAD parameter if you are using Azure AD otherwise the script will assume this is an ADFS deployment. 
+	If you want to also register your installation in order to enable telemetry and market place syndication add the -Register parameter.
 	You will be prompted for credential, these are your azure stack service administrator credential.
 	If you enabled registration, once azure stack powershell module is installed you will be prompted again for credentials, these will be your azure credentials for registration.
 	
 	This script can take up to 3 hours to finish.
 	
 Usage Example:
+-------------
 
 	ConfigASDK.ps1 -AAD -Register
