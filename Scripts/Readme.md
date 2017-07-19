@@ -5,6 +5,8 @@ Description
 
 The purpose of this script is to automate as much as possible post deployment tasks in Azure Stack Development Kit
 This include :
+* Set password expiration
+* Disable windows update on all infrastructures VMs and ASDK host
 * Tools installation (git, azstools, Azure Stack PS module)
 * Registration with Azure
 * Windows Server 2016 and Ubuntu 14.04.4-LTS images installation
