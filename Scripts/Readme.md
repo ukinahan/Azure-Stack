@@ -30,6 +30,7 @@ Instructions
 * If you want to also register your installation in order to enable telemetry and market place syndication add the -Register parameter.
 * You will be prompted for credential, these are your azure stack service administrator credential.
 * If you enabled registration, once azure stack powershell module is installed you will be prompted again for credentials, these will be your azure credentials for registration.
+* mysqlrp administrator will be "mysqlrpadmin" and sqlrp administrator will be "sqlrpadmin"
 	
 This script can take up to 3 hours to finish.
 	
