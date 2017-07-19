@@ -19,12 +19,12 @@ Instructions
 * Login as your service adminstrator on your ASDK host.
 * Edit the script and set the proper value to the following variables :
 	
-	$ISOPath = "PATH_TO_WIN2016_ISO"                             # path to your windows 2016 evaluation ISO
-	$rppassword = "ADMINPASSWORD_FOR_RP_INSTALLATION"            # the password that you want to set for Resource Providers administrator account
-	$azureRegSubscriptionId = "YOUR_SUBSCRIPTION_ID"             # your Azure subscription ID for registration
-	$azureRegDirectoryTenantName = "YOUR_AAD_TENANT_NAME"        # your Azure Tenant Directory Name for registration
-	$azureRegAccountId = "YOUR_AZURE_SERVICE_ADMIN"              # your Azure Global Administrator account ID for registration
-	$azureDirectoryTenantName = "YOUR_AAD_TENANT_NAME"           # your Azure Tenant Directory Name for Azure Stack 
+		$ISOPath = "PATH_TO_WIN2016_ISO"                             # path to your windows 2016 evaluation ISO
+		$rppassword = "ADMINPASSWORD_FOR_RP_INSTALLATION"            # the password that you want to set for Resource Providers administrator account
+		$azureRegSubscriptionId = "YOUR_SUBSCRIPTION_ID"             # your Azure subscription ID for registration
+		$azureRegDirectoryTenantName = "YOUR_AAD_TENANT_NAME"        # your Azure Tenant Directory Name for registration
+		$azureRegAccountId = "YOUR_AZURE_SERVICE_ADMIN"              # your Azure Global Administrator account ID for registration
+		$azureDirectoryTenantName = "YOUR_AAD_TENANT_NAME"           # your Azure Tenant Directory Name for Azure Stack 
 	
 * Open an elevated powershell window and run the script using -AAD parameter if you are using Azure AD otherwise the script will assume this is an ADFS deployment. 
 * If you want to also register your installation in order to enable telemetry and market place syndication add the -Register parameter.
