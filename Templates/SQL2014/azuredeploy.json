@@ -7,14 +7,14 @@
             "metadata": {
                 "description": "The globally unique DNS Name for the Public IP used to access the Virtual Machine."
             },
-            "defaultValue": "[replace(replace(tolower(concat('sqldns',resourceGroup().name)), '-', ''), '.','')]"
+            "defaultValue": "sqlhost1"
         },
         "vmName": {
             "type": "string",
             "metadata": {
                 "description": "The name of the Virtual Machine. Limit 15 characters. (Reference: https://support.microsoft.com/en-us/kb/909264)"
             },
-            "defaultValue": "[substring(concat('sql', uniqueString(resourceGroup().id)),0,12)]"
+            "defaultValue": "sqlhost1"
         },
         "vmTimeZone": {
             "type": "string",
@@ -30,20 +30,21 @@
             },
             "defaultValue": "http://care.dlservice.microsoft.com/dl/download/2/F/8/2F8F7165-BB21-4D1E-B5D8-3BD3CE73C77D/SQLServer2014SP1-FullSlipstream-x64-ENU.iso"
         },
-        "assetLocation": {
-            "type": "string",
-            "metadata": {
-                "description": "The location of resources that the script is dependent on such as linked templates and DSC modules"
-            },
-            "defaultValue": "https://raw.githubusercontent.com/Azure/AzureStack-QuickStart-Templates/master/sql-2014-standalone"
-
+      "assetLocation": {
+        "type": "string",
+        "metadata": {
+          "description": "The location of resources that the script is dependent on such as linked templates and DSC modules"
         },
+        "defaultValue": "https://raw.githubusercontent.com/alainv-msft/Azure-Stack/master/Templates/SQL2014/"
+
+      },
         "vmSize": {
             "type": "string",
-            "defaultValue": "Standard_A3",
+            "defaultValue": "Standard_A2",
             "allowedValues": [
+                "Standard_A2",
                 "Standard_A3",
-                "Standard_A4"
+                "Standard_A4"              
             ],
             "metadata": {
                 "description": "The size of the Virtual Machine. (Reference: https://azure.microsoft.com/en-us/documentation/articles/virtual-machines-size-specs/)"
@@ -53,7 +54,8 @@
             "type": "string",
             "defaultValue": "2016-Datacenter",
             "allowedValues": [
-                "2016-Datacenter"
+                "2016-Datacenter",
+                "2016-Datacenter-Core"
             ],
             "metadata": {
                 "description": "The Windows Operating System version for the Virtual Machine. This will pick a fully patched image of this given Windows version. Allowed values: 2016-Datacenter."
@@ -64,7 +66,7 @@
             "metadata": {
                 "description": "The local Administrator username on the Virtual Machine. Limit 64 characters."
             },
-            "defaultValue": "localadmin"
+            "defaultValue": "sqlrpadmin"
         },
         "adminPassword": {
             "type": "securestring",
