@@ -13,6 +13,7 @@ This include :
 * MySQL Resource Provider Installation
 * Deployment of a MySQL 5.7 hosting Server on Windows Server 2016 Core
 * SQL Resource Provider Installation
+* Deployment of a SQL 2014 hosting server on Windows 2016
 * AppService Resource Provider sources download
 
 Instructions
@@ -32,7 +33,7 @@ Instructions
 * If you want to also register your installation in order to enable telemetry and market place syndication add the -Register parameter.
 * You will be prompted for credential, these are your azure stack service administrator credential.
 * If you enabled registration, once azure stack powershell module is installed you will be prompted again for credentials, these will be your azure credentials for registration.
-* mysqlrp administrator will be "mysqlrpadmin" and sqlrp administrator will be "sqlrpadmin"
+* mysqlrp administrator will be "mysqlrpadmin" and sqlrp administrator will be "sqlrpadmin". These logins are also applicable for hosting servers.
 	
 This script can take up to 3 hours to finish.
 	
