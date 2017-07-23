@@ -9,7 +9,7 @@
             "value": 10240
         },
         "hostingServerSQLLoginName": {
-            "value": "sqlrpadmin"
+            "value": "sa"
         },
         "hostingServerSQLLoginPassword": {
             "value": ""
