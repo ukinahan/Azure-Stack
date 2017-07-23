@@ -33,7 +33,8 @@
       "type": "string",
       "defaultValue": "2016-Datacenter",
       "allowedValues": [
-        "2016-Datacenter"
+        "2016-Datacenter",
+        "2016-Datacenter-Core"
       ],
       "metadata": {
         "description": "The Windows Operating System version for the Virtual Machine. This will pick a fully patched image of this given Windows version. Allowed values: 2016-Datacenter."
@@ -96,7 +97,7 @@
     "imageOffer": "WindowsServer",
     "dnsNameForPublicIP": "[tolower(concat(resourceGroup().name, parameters('vmName')))]",
     "OSDiskName": "[concat('osdisk-', parameters('vmName'))]",
-	"assetLocation": "https://raw.githubusercontent.com/Azure/AzureStack-QuickStart-Templates/master/mysql-standalone-server-windows/",
+	"assetLocation": "https://raw.githubusercontent.com/alainv-msft/Azure-Stack/master/Templates/MySQL/",
     "cseBlobNameScript": "MySql.Setup.CustomScriptExtension.ps1",
 	
 	"mySqlInstallationZipPath": {
