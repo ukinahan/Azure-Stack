@@ -12,9 +12,13 @@ This include :
 * Windows Server 2016 and Ubuntu 14.04.4-LTS images installation
 * MySQL Resource Provider Installation
 * Deployment of a MySQL 5.7 hosting Server on Windows Server 2016 Core
+* Attach MySQL hosting server to MySQL Resource Provider
 * SQL Resource Provider Installation
 * Deployment of a SQL 2014 hosting server on Windows 2016
-* AppService Resource Provider sources download
+* Attach SQL Hosting server to SQL Resource Provider
+* AppService Resource Provider sources download to c:\Temp
+* Set new default Quotas for Compute, Network, Storage and keyvault
+* Create a simple offer and plan to provide IaaS capabilities to tenants
 
 Instructions
 ------------
@@ -36,6 +40,7 @@ Instructions
 * mysqlrp administrator will be "mysqlrpadmin" and sqlrp administrator will be "sqlrpadmin". These logins are also applicable for hosting servers.
 	
 This script can take up to 3 hours to finish.
+Once the script is finished you can proceed with app service installation then create a new plan including the paas services.
 	
 Usage Example:
 -------------
