@@ -4,42 +4,42 @@
     "parameters": {
         "hostingServerName": {
             "defaultValue": "sqlhost1.local.cloudapp.azurestack.external",
-            "type": "String",
+            "type": "string",
             "metadata": {
                 "description": "SQL Server FQDN or IPv4 of an existing SQL server to be added as a SQL Adapter hosting server."
             }
         },
         "port": {
             "defaultValue": "1433",
-            "type": "String"
+            "type": "string"
         },
         "instanceName": {
             "defaultValue": "",
-            "type": "String"
+            "type": "string"
         },
         "totalSpaceMB": {
             "defaultValue": "10240",
-            "type": "Int",
+            "type": "int",
             "metadata": {
                 "description": "The total space in MB to be allocated for creation of databases on the hosting server."
             }
         },
         "hostingServerSQLLoginName": {
             "defaultValue": "sa",
-            "type": "String",
+            "type": "string",
             "metadata": {
                 "description": "Name of a SQL login to be used for connecting to the SQL database engine on the hosting server using SQL authentication."
             }
         },
         "hostingServerSQLLoginPassword": {
-            "type": "SecureString",
+            "type": "securestring",
             "metadata": {
                 "description": "Password for the given SQL login."
             }
         },
         "skuName": {
             "defaultValue": "SQL2014",
-            "type": "String",
+            "type": "string",
             "metadata": {
                 "description": "Name of the SQL Adapter SKU to associate the hosting server to."
             }
