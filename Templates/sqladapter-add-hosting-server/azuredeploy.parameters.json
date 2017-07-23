@@ -17,9 +17,6 @@
         "hostingServerSQLLoginName": {
             "value": "sa"
         },
-        "hostingServerSQLLoginPassword": {
-            "value": null
-        },
         "skuName": {
             "value": "SQL2014"
         }
