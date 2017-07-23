@@ -5,6 +5,12 @@
         "hostingServerName": {
             "value": "sqlhost1.local.cloudapp.azurestack.external"
         },
+        "port": {
+            "value": "1433"
+        },
+        "instanceName": {
+            "value": ""
+        },
         "totalSpaceMB": {
             "value": 10240
         },
@@ -12,7 +18,7 @@
             "value": "sa"
         },
         "hostingServerSQLLoginPassword": {
-            "value": ""
+            "value": null
         },
         "skuName": {
             "value": "SQL2014"
