@@ -6,7 +6,8 @@
             "type": "string",
             "metadata": {
                 "description": "MySQL Server FQDN or IPv4 of an existing MySQL server to be added as a MySQL Adapter hosting server."
-            }
+            },
+            "defaultValue": "mysqlhost1.local.cloudapp.azurestack.external"
         },
         "port": {
             "type": "string",
