@@ -79,7 +79,7 @@
     "vhdStorageName": "[tolower(concat(substring(padleft(replace(replace(parameters('vmName'), '-', ''),'_',''), 9, '0'),0, 9), 'st', uniqueString(resourceGroup().id)))]",
     "vhdStorageType": "Standard_LRS",
 
-    "publicIPAddressName": "[concat(parameters('vmName'), '-PublicIP')]",
+    "publicIPAddressName": "[concat(parameters('vmName'), '-PIP')]",
     "publicIPAddressType": "Static",
 
     "subnetSecurityGroupName": "[concat(parameters('vmName'), '-SSG')]",
