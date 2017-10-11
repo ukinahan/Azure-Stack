@@ -1,4 +1,4 @@
-ConfigASDK.ps1
+ConfigASDK.ps1 (not updated for asdk build 20170928.3 yet )
 ==============
 Description
 -----------
@@ -9,7 +9,7 @@ This include :
 * Disable windows update on all infrastructures VMs and ASDK host
 * Tools installation (git, azstools, Azure Stack PS module)
 * Registration with Azure
-* Windows Server 2016 and Ubuntu 14.04.4-LTS images installation
+* Windows Server 2016 and Ubuntu 16.04-LTS images installation
 * MySQL Resource Provider Installation
 * Deployment of a MySQL 5.7 hosting Server on Windows Server 2016 Core
 * Attach MySQL hosting server to MySQL Resource Provider
