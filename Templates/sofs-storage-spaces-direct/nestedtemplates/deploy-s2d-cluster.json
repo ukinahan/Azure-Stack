@@ -24,7 +24,7 @@
         },
         "adminPassword": {
             "type": "securestring",
-            "minLength": 12,
+            "minLength": 6,
             "metadata": {
                 "description": "Password for the Administrator account of the existing Active Directory Domain"
             }
