@@ -3,6 +3,6 @@
     "",
     "\\nestedtemplates"
   ],
-  "SelectedNode": "\\azuredeploy.parameters.json",
+  "SelectedNode": "\\nestedtemplates\\deploy-s2d-cluster.json",
   "PreviewInSolutionExplorer": false
 }

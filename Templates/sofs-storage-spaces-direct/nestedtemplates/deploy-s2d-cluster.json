@@ -296,29 +296,28 @@
                 "settings": {
                     "modulesUrl": "[variables('s2dConfigModulesURL')]",
                     "configurationFunction": "[variables('s2dConfigFunction')]",
-                    "properties": {
-                        "domainName": "[parameters('domainName')]",
-                        "clusterName": "[variables('clusterName')]",
-                        "sofsName": "[parameters('sofsName')]",
-                        "shareName": "[parameters('shareName')]",
-                        "vmNamePrefix": "[variables('vmNamePrefix')]",
-                        "vmCount": "[parameters('vmCount')]",
-                        "vmDiskSize": "[parameters('vmDiskSize')]",
-                        "witnessStorageName": "[variables('witnessStorageName')]",
-                        "witnessStorageEndpoint": "[replace(split(reference(concat('Microsoft.Storage/storageAccounts/', variables('witnessStorageName'))).primaryEndpoints.blob, 'blob.')[1], '/', '')]",
-                        "witnessStorageKey": {
-                            "userName": "PLACEHOLDER-DO-NOT-USE",
-                            "password": "PrivateSettingsRef:witnessStorageKey"
-                        },
-                        "adminCreds": {
-                            "userName": "[parameters('adminUsername')]",
-                            "password": "PrivateSettingsRef:adminPassword"
-                        }
-                    }
+                  "properties": {
+                    "adminCreds": {
+                      "userName": "[parameters('adminUsername')]",
+                      "password": "[parameters('adminPassword')]"
+                    },
+                    "clusterName": "[variables('clusterName')]",
+                    "domainName": "[parameters('domainName')]",
+                    "shareName": "[parameters('shareName')]",
+                    "sofsName": "[parameters('sofsName')]",
+                    "vmCount": "[parameters('vmCount')]",
+                    "vmDiskSize": "[parameters('vmDiskSize')]",
+                    "vmNamePrefix": "[variables('vmNamePrefix')]",
+                    "witnessStorageEndpoint": "[replace(split(reference(concat('Microsoft.Storage/storageAccounts/', variables('witnessStorageName'))).primaryEndpoints.blob, 'blob.')[1], '/', '')]",
+                    "witnessStorageKey": {
+                      "userName": "PLACEHOLDER-DO-NOT-USE",
+                      "password": "PrivateSettingsRef:witnessStorageKey"
+                    },
+                    "witnessStorageName": "[variables('witnessStorageName')]"
+                  }
                 },
                 "protectedSettings": {
                     "items": {
-                        "adminPassword": "[parameters('adminPassword')]",
                         "witnessStorageKey": "[listKeys(resourceId('Microsoft.Storage/storageAccounts',variables('witnessStorageName')),variables('apiVersionStorage')).keys[0].value]"
                     }
                 }
