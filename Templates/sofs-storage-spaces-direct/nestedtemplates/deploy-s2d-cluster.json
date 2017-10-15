@@ -299,7 +299,7 @@
                   "properties": {
                     "adminCreds": {
                       "userName": "[parameters('adminUsername')]",
-                      "password": "[parameters('adminPassword')]"
+                      "password":  "PrivateSettingsRef:adminPassword"
                     },
                     "clusterName": "[variables('clusterName')]",
                     "domainName": "[parameters('domainName')]",
