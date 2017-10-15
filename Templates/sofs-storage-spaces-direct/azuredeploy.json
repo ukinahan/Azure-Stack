@@ -26,20 +26,12 @@
       "metadata": {
         "description": "Size of the S2D VMs to be created"
       },
-      "defaultValue": "Standard_DS1_v2",
-      "allowedValues": [
-        "Standard_A1",
-        "Standard_A2",
-        "Standard_DS1_v2",
-        "Standard_DS2_v2",
-        "Standard_D1_v2",
-        "Standard_D2_v2"
-      ]
+      "defaultValue": "Standard_DS1_v2"
     },
     "vmCount": {
       "type": "int",
       "minValue": 2,
-      "maxValue": 5,
+      "maxValue": 3,
       "metadata": {
         "description": "Number of S2D VMs to be created in cluster (Min=2, Max=3)"
       },
@@ -52,7 +44,7 @@
       "metadata": {
         "description": "Size of each data disk in GB on each S2D VM (Min=128, Max=1023)"
       },
-      "defaultValue": 512
+      "defaultValue": 1023
     },
     "vmDiskCount": {
       "type": "int",
@@ -67,15 +59,13 @@
       "type": "string",
       "metadata": {
         "description": "DNS domain name for existing Active Directory domain"
-      },
-      "defaultValue": "contoso.local"
+      }
     },
     "adminUsername": {
       "type": "string",
       "metadata": {
         "description": "Name of the Administrator of the existing Active Directory Domain"
-      },
-      "defaultValue": "Cloudadmin"
+      }
     },
     "adminPassword": {
       "type": "securestring",
@@ -107,14 +97,14 @@
       "metadata": {
         "description": "Name of clustered Scale-Out File Server role"
       },
-      "defaultValue": "sofs01"
+      "defaultValue": "fs01"
     },
     "shareName": {
       "type": "string",
       "metadata": {
         "description": "Name of shared data folder on clustered Scale-Out File Server role"
       },
-      "defaultValue": "Websites"
+      "defaultValue": "data"
     },
     "_artifactsLocation": {
       "type": "string",

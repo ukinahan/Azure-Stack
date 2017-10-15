@@ -6,10 +6,10 @@
       "value": "GEN-UNIQUE-8"
     },
     "existingDomainName": {
-      "value": "contoso.local"
+      "value": "contoso.com"
     },
     "adminUsername": {
-      "value": "Cloudadmin"
+      "value": "AzureAdmin"
     },
     "adminPassword": {
       "value": "GEN-PASSWORD"
