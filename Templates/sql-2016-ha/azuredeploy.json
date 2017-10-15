@@ -164,7 +164,7 @@
             "metadata": {
                 "description": "Name of virtual network to be created"
             },
-            "defaultValue": "autohav2VNET"
+            "defaultValue": "vnet01"
         },
         "templatesBaseUrl": {
             "type": "string",
