@@ -26,11 +26,11 @@
             "type": "string"
         },
 		"family": {
-            "type": "string"
+            "type": "string",
 			"defaultValue": "MySQL Server 5.7"
         },
 		"tier": {
-            "type": "string"
+            "type": "string",
 			"defaultValue": "Standalone"
         }
     },
