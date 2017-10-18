@@ -52,7 +52,7 @@
             "name": "[parameters('hostingServerName')]",
             "location": "[resourceGroup().location]",
 			"dependsOn": [
-				"[concat('Microsoft.MySqlAdapter.Admin/locations/skus/', parameters('skuName'))]",
+				"[concat('Microsoft.MySqlAdapter.Admin/locations/skus/', parameters('skuName'))]"],
             "properties": {
                 "name": "[parameters('hostingServerName')]",
                 "port": "[parameters('port')]",
