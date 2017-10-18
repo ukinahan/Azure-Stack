@@ -24,14 +24,35 @@
         },
         "skuName": {
             "type": "string"
+        },
+		"family": {
+            "type": "string"
+			"defaultValue": "MySQL Server 5.7"
+        },
+		"tier": {
+            "type": "string"
+			"defaultValue": "Standalone"
         }
     },
     "resources": [
+	        {
+            "apiVersion": "2017-08-28",
+            "type": "Microsoft.MySqlAdapter.Admin/locations/skus",
+            "name": "[parameters('skuName')]",
+            "location": "[resourceGroup().location]",
+            "properties": {
+                "name": "[parameters('skuName')]",
+                "family": "[parameters('family')]",
+                "tier": "[parameters('tier')]"
+            }
+        },
         {
             "apiVersion": "2017-08-28",
             "type": "Microsoft.MySqlAdapter.Admin/hostingServers",
             "name": "[parameters('hostingServerName')]",
             "location": "[resourceGroup().location]",
+			"dependsOn": [
+				"[concat('Microsoft.MySqlAdapter.Admin/locations/skus/', parameters('skuName'))]",
             "properties": {
                 "name": "[parameters('hostingServerName')]",
                 "port": "[parameters('port')]",
