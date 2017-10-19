@@ -29,8 +29,8 @@
         "fileShareUserPassword": {
             "value": null
         },
-        "vmExtensionScriptLocation": {
-            "value": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/appservice-fileserver-standalone"
-        }
+      "vmExtensionScriptLocation": {
+        "value": "https://raw.githubusercontent.com/alainv-msft/Azure-Stack/master/Templates/appservice-fileserver-standalone/"
+      }
     }
 }
