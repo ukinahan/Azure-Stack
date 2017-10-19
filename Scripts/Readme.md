@@ -32,12 +32,17 @@ Instructions
 * You will be prompted for credentials, these are your azure stack service administrator credential then your azurestack\azurestackadmin credentials
 * mysqlrp and sqlrp administrator account will be "cloudadmin". These logins are also applicable for hosting servers.
 * fileserver vm for appservice will use fileshareowner as administrator account
-	
+* the password set for every login is the one set for the $rppassword variable in the script
+
+Post script actions
+-------------------	
 This script can take up to 5 hours to finish.
-Once the script is finished you can proceed with app service installation then create a new plan including the paas services.
-For app service installation you need to continue from the Create AAD application step from here : https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-app-service-before-you-get-started
-You need to attach your capacity hosts (sql and mysql) to their resource providers from the admin portal
-You have to register your system if you want to enable marketplace syndication. follow these steps https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-register
+Once the script is finished you have to complete the following:
+
+* AppService installation you need to continue from the Create AAD application step from here : https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-app-service-before-you-get-started
+* You need to attach your capacity hosts (sql and mysql) to their resource providers from the admin portal
+* You have to register your system if you want to enable marketplace syndication. follow these steps https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-register
+* Create your plans to offer services to tenants
 
 
 Usage Example:
