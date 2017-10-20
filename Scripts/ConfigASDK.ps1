@@ -63,19 +63,29 @@
 Param (
 
 # if AAD deployment
-[switch]$AAD
+[switch]$AAD,
+
+# local administrator password for appservice, mysql and sql vms
+[parameter(Mandatory=$true)]
+[string]$rppassword,
+
+# Path to Windows Server 2016 Datacenter evaluation iso
+[parameter(Mandatory=$true)]
+[string]$ISOPath
 
 )
-
-# Variables to set
-$ISOPath = "D:\Flats\14393.0.161119-1705.RS1_REFRESH_SERVER_EVAL_X64FRE_EN-US.ISO"     # path to your windows 2016 evaluation ISO
-$rppassword = "xxxxxxxxx"       # the password that you want to set for Resource Providers administrator account on all machines deployed for resource providers
-$azureDirectoryTenantName = "xxxx.onmicrosoft.com"     # your Azure Tenant Directory Name for Azure Stack 
 
 # more variables but they should not be changed
 $ERCSip = "192.168.200.225"
 $vmLocalAdminPass = ConvertTo-SecureString "$rppassword" -AsPlainText -Force
-$Azscredential = Get-Credential -Message "Enter your Azure Stack Service Administrator credentials xx@xx.onmicrosoft.com" # your service administrator credentials
+$AZDCredential = Get-Credential -Credential Azurestack\AzurestackAdmin
+if ($AAD) {
+$Azscredential = Get-Credential -Message "Enter your Azure Stack Service Administrator credentials xx@xx.onmicrosoft.com"
+$azureDirectoryTenantName = Read-Host -Prompt "Specify your Azure AD Tenant Directory Name for Azure Stack"
+}
+else {
+$Azscredential = $AZDCredential
+}
 
 # set password expiration to 180 days
 Write-host "Configuring password expiration policy"
@@ -84,7 +94,6 @@ Get-ADDefaultDomainPasswordPolicy
 
 #disable Windows update on infrastructure VMs and host
 Write-Host "Disabling Windows Update on Infrastructure VMs and ASDK Host"
-$AZDCredential = Get-Credential -Credential Azurestack\AzurestackAdmin
 $AZSvms = get-vm -Name AZS*
 $scriptblock = {
 sc.exe config wuauserv start=disabled
