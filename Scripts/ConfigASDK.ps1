@@ -37,10 +37,12 @@
 .PARAMETERS
 
 	-AAD (if you use AAD deployment)
+	-rppassword "yourpassword" this will be the administrator password for every vm deployed
+	-ISOPath "c:\xxxx\xxx.iso" specify the path to your Windows Server 2016 Datacenter evaluation iso 
 
 .EXAMPLE
 
-	ConfigASDK.ps1 -AAD -verbose
+	ConfigASDK.ps1 -AAD -rppassword "yourpassword" -ISOPath "c:\mywin2016eval.iso" -verbose
 
 #>
 

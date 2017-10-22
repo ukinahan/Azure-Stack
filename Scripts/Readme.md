@@ -9,6 +9,7 @@ This include :
 * Disable windows update on all infrastructures VMs and ASDK host
 * Tools installation (git, azstools, Azure Stack PS module)
 * Windows Server 2016 and Ubuntu 16.04-LTS images installation
+* Creates VM scale set gallery item
 * MySQL Resource Provider Installation
 * SQL Resource Provider Installation
 * Deployment of a MySQL 5.7 hosting Server on Windows Server 2016 Core
@@ -22,30 +23,29 @@ Instructions
 ------------
 
 * Login as your service adminstrator on your ASDK host.
-* Edit the script and set the proper value to the following variables :
-	
-		$ISOPath = "PATH_TO_WIN2016_ISO"                             # path to your windows 2016 evaluation ISO
-		$rppassword = "ADMINPASSWORD_FOR_RP_INSTALLATION" 			 # Resource Providers administrator account on all machines deployed for resource providers
-		$azureDirectoryTenantName = "YOUR_AAD_TENANT_NAME"           # your Azure Tenant Directory Name for Azure Stack if AAD
-	
-* Open an elevated powershell window and run the script using -AAD parameter if you are using Azure AD otherwise the script will assume this is an ADFS deployment. 
-* You will be prompted for credentials, these are your azure stack service administrator credential then your azurestack\azurestackadmin credentials
+* Open an elevated powershell window and run the script with the following parameters:
+		-AAD switch if you are using Azure AD otherwise the script will assume this is an ADFS deployment. 
+		-rppassword "YourPassword"; this will be the administrator password set for each vm deployed for PaaS services
+		-ISOPath "c:\xxx\xx.iso" ; specify the path to your Windows Server 2016 Datacenter evaluation iso file
+* You will be prompted for credentials twice. (for azurestackadmin account and for your service admin account if AAD)
 * mysqlrp and sqlrp administrator account will be "cloudadmin". These logins are also applicable for hosting servers.
 * fileserver vm for appservice will use fileshareowner as administrator account
-* the password set for every login is the one set for the $rppassword variable in the script
+
 
 Post script actions
 -------------------	
-This script can take up to 5 hours to finish.
+This script can take up to 6 hours to finish.
 Once the script is finished you have to complete the following:
 
-* AppService installation you need to continue from the Create AAD application step from here : https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-app-service-before-you-get-started
-* You need to attach your capacity hosts (sql and mysql) to their resource providers from the admin portal
+* For AppService installation you need to continue from the Create AAD application step from here : https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-app-service-before-you-get-started
+* You need to attach your capacity hosts (sql and mysql) to their resource providers adapters from the admin portal.
 * You have to register your system if you want to enable marketplace syndication. follow these steps https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-register
 * Create your plans to offer services to tenants
-
+* Enjoy !
 
 Usage Example:
 -------------
 
-	ConfigASDK.ps1 -AAD 
+for AAD	ConfigASDK.ps1 -AAD -rppassword "mypassword" -ISOPath "c:\flat\14393.0.161119-1705.RS1_REFRESH_SERVER_EVAL_X64FRE_EN-US.ISO"
+
+for ADFS ConfigASDK.ps1 rppassword "mypassword" -ISOPath "c:\flat\14393.0.161119-1705.RS1_REFRESH_SERVER_EVAL_X64FRE_EN-US.ISO"
