@@ -24,9 +24,11 @@ Instructions
 
 * Login as your service adminstrator on your ASDK host.
 * Open an elevated powershell window and run the script with the following parameters:
-		-AAD switch if you are using Azure AD otherwise the script will assume this is an ADFS deployment. 
-		-rppassword "YourPassword"; this will be the administrator password set for each vm deployed for PaaS services
-		-ISOPath "c:\xxx\xx.iso" ; specify the path to your Windows Server 2016 Datacenter evaluation iso file
+
+		*-AAD switch if you are using Azure AD otherwise the script will assume this is an ADFS deployment. 
+		*-rppassword "YourPassword"; this will be the administrator password set for each vm deployed for PaaS services
+		*-ISOPath "c:\xxx\xx.iso" ; specify the path to your Windows Server 2016 Datacenter evaluation iso file
+		
 * You will be prompted for credentials twice. (for azurestackadmin account and for your service admin account if AAD)
 * mysqlrp and sqlrp administrator account will be "cloudadmin". These logins are also applicable for hosting servers.
 * fileserver vm for appservice will use fileshareowner as administrator account
@@ -46,6 +48,4 @@ Once the script is finished you have to complete the following:
 Usage Example:
 -------------
 
-for AAD	ConfigASDK.ps1 -AAD -rppassword "mypassword" -ISOPath "c:\flat\14393.0.161119-1705.RS1_REFRESH_SERVER_EVAL_X64FRE_EN-US.ISO"
-
-for ADFS ConfigASDK.ps1 rppassword "mypassword" -ISOPath "c:\flat\14393.0.161119-1705.RS1_REFRESH_SERVER_EVAL_X64FRE_EN-US.ISO"
+ConfigASDK.ps1 -AAD -rppassword "mypassword" -ISOPath "c:\flat\14393.0.161119-1705.RS1_REFRESH_SERVER_EVAL_X64FRE_EN-US.ISO"
