@@ -22,7 +22,7 @@ This include :
 Instructions
 ------------
 
-* Login as your service adminstrator on your ASDK host.
+* Login as azurestack\azurestackadmin on your ASDK host.
 * Open an elevated powershell window and run the script with the following parameters:
 
 		-AAD switch if you are using Azure AD otherwise the script will assume this is an ADFS deployment. 
