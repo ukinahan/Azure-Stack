@@ -328,4 +328,4 @@ invoke-webrequest https://aka.ms/InstallAzureCliWindows -OutFile C:\AzureCLI.msi
 msiexec.exe /qb-! /i C:\AzureCli.msi
 
 Write-host "Setting Execution Policy back to RemoteSigned"
-Set-ExecutionPolicy RemoteSigned
+Set-ExecutionPolicy RemoteSigned -Confirm:$false -Force
