@@ -30,7 +30,6 @@
 .AUTHOR
 
     Alain VETIER 
-
     Blog: http://aka.ms/alainv 
     Email: alainv@microsoft.com 
 
@@ -94,7 +93,24 @@ Write-host "Configuring password expiration policy"
 Set-ADDefaultDomainPasswordPolicy -MaxPasswordAge 180.00:00:00 -Identity azurestack.local
 Get-ADDefaultDomainPasswordPolicy
 
-#disable Windows update on infrastructure VMs and host
+# Disable Server Manager at Logon
+Write-Host "Disabling Server Manager at logon..."
+Get-ScheduledTask -TaskName ServerManager | Disable-ScheduledTask -Verbose
+
+# Disable IE ESC
+Write-Host "Disabling IE Enhanced Security Configuration (ESC)."
+$AdminKey = "HKLM:\SOFTWARE\Microsoft\Active Setup\Installed Components\{A509B1A7-37EF-4b3f-8CFC-4F3A74704073}"
+$UserKey = "HKLM:\SOFTWARE\Microsoft\Active Setup\Installed Components\{A509B1A8-37EF-4b3f-8CFC-4F3A74704073}"
+Set-ItemProperty -Path $AdminKey -Name "IsInstalled" -Value 0
+Set-ItemProperty -Path $UserKey -Name "IsInstalled" -Value 0
+Stop-Process -Name explorer -Force
+Write-Host "IE Enhanced Security Configuration (ESC) has been disabled."
+
+# Set Power Policy
+Write-Host "Optimizing power policy for high performance"
+POWERCFG.EXE /S SCHEME_MIN
+
+# Disable Windows update on infrastructure VMs and host
 Write-Host "Disabling Windows Update on Infrastructure VMs and ASDK Host"
 $AZSvms = get-vm -Name AZS*
 $scriptblock = {
@@ -106,8 +122,13 @@ Invoke-Command -VMName $vm.name -ScriptBlock $scriptblock -Credential $AZDCreden
 }
 sc.exe config wuauserv start=disabled
 
+# Disable DNS Server on host
+Write-Host "Disabling DNS Server on ASDK Host"
+Stop-Service -Name DNS -Force -Confirm:$false
+Set-Service -Name DNS -startuptype disabled -Confirm:$false
+
 # Install Azure Stack PS module
-Write-host "Installing Azure Stack PowerShel module"
+Write-host "Installing Azure Stack PowerShell module"
 Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted
 Install-Module -Name AzureRm.BootStrapper
 Use-AzureRmProfile -Profile 2017-03-09-profile -Force
@@ -141,6 +162,9 @@ Login-AzureRmAccount -EnvironmentName "AzureStackAdmin" -TenantId $TenantID -Cre
 # Create Windows Server 2016 Images
 Write-host "installing Windows Server 2016 Datacenter full and Core images"
 New-AzsServer2016VMImage -ISOPath $ISOPath -Version Both -IncludeLatestCU -Net35 $true -CreateGalleryItem $true
+del *.vhd -Force
+del *.msu -Force
+del *.cab -Force
 
 # Create Ubuntu 16.04-LTS image
 Write-host "downloading Ubuntu 16.04-LTS Image"
@@ -274,10 +298,34 @@ New-AzureRmResourceGroup -Name $RGName -Location $Location
 $plan = New-AzsPlan -Name $PlanName -DisplayName $PlanName -ArmLocation $Location -ResourceGroupName $RGName -QuotaIds $QuotaIDs
 New-AzsOffer -Name $OfferName -DisplayName $OfferName -State Public -BasePlanIds $plan.Id -ResourceGroupName $RGName -ArmLocation $Location
 
+# Install useful ASDK Host Apps via Chocolatey
+Set-ExecutionPolicy Unrestricted -Force
+iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 
+# Enable Choco Global Confirmation
+Write-host "Enabling global confirmation to streamline installs"
+choco feature enable -n allowGlobalConfirmation
 
+# Visual Studio Code
+Write-host "Installing VS Code with Chocolatey"
+choco install visualstudiocode
 
+# Putty
+Write-host "Installing Putty with Chocolatey"
+choco install putty.install
 
+# WinSCP
+Write-host "Installing WinSCP with Chocolatey"
+choco install winscp.install 
 
+# Chrome
+Write-host "Installing Chrome with Chocolatey"
+choco install googlechrome
 
+# Azure CLI
+Write-host "Installing latest version of Azure CLI"
+invoke-webrequest https://aka.ms/InstallAzureCliWindows -OutFile C:\AzureCLI.msi
+msiexec.exe /qb-! /i C:\AzureCli.msi
 
+Write-host "Setting Execution Policy back to RemoteSigned"
+Set-ExecutionPolicy RemoteSigned
