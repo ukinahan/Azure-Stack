@@ -239,7 +239,7 @@ Write-host "downloading appservice installer"
 cd C:\Temp
 Invoke-WebRequest https://aka.ms/appsvconmashelpers -OutFile "c:\temp\appservicehelper.zip"
 Expand-Archive C:\Temp\appservicehelper.zip -DestinationPath .\AppService\ -Force
-Invoke-WebRequest http://aka.ms/appsvconmasrc1installer -OutFile "c:\temp\AppService\appservice.exe"
+Invoke-WebRequest https://aka.ms/appsvconmasinstaller -OutFile "c:\temp\AppService\appservice.exe"
 Write-Host "generating certificates"
 cd C:\Temp\AppService
 .\Create-AppServiceCerts.ps1 -PfxPassword $vmLocalAdminPass -DomainName "local.azurestack.external"
