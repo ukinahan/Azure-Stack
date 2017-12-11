@@ -17,9 +17,11 @@
         - AppService prerequisites installation (sql server and file server)
         - AppService Resource Provider sources download and certificates generation
         - Set new default Quotas for Compute, Network, Storage and keyvault
+        - install usefull ASDK Host apps via Chocolatery (Visual Studio Code - putty - WinSCP - Chrome - Azure CLI)
 
 .VERSION
 
+    2.1  update for release 1.0.171122.1 (fix for ADFS deployment)
     2.0  update for release 1.0.280917.3 
     1.0: small bug fixes and adding quotas/plan/offer creation
     0.5: add SQL 2014 VM deployment
@@ -31,7 +33,12 @@
 
     Alain VETIER 
     Blog: http://aka.ms/alainv 
-    Email: alainv@microsoft.com 
+    Email: alainv@microsoft.com
+
+.CONTRIBUTORS
+
+    Matt McSpirit
+    Email: Matt.McSpirit@microsoft.com   
 
 .PARAMETERS
 
@@ -85,7 +92,7 @@ $Azscredential = Get-Credential -Message "Enter your Azure Stack Service Adminis
 $azureDirectoryTenantName = Read-Host -Prompt "Specify your Azure AD Tenant Directory Name for Azure Stack"
 }
 else {
-$Azscredential = $AZDCredential
+$Azscredential = get-credential -Credential AzureStack\CloudAdmin
 }
 
 # set password expiration to 180 days
@@ -114,8 +121,9 @@ POWERCFG.EXE /S SCHEME_MIN
 Write-Host "Disabling Windows Update on Infrastructure VMs and ASDK Host"
 $AZSvms = get-vm -Name AZS*
 $scriptblock = {
+$env:COMPUTERNAME    
 sc.exe config wuauserv start=disabled
-Get-Service -Name wuauserv | fl StartType,Status
+Get-Service -Name wuauserv | fl StartType,Status,PSremote
 }
 foreach ($vm in $AZSvms) {
 Invoke-Command -VMName $vm.name -ScriptBlock $scriptblock -Credential $AZDCredential
