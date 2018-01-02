@@ -1,4 +1,4 @@
-ConfigASDK.ps1 (updated for asdk build 20170928.3)
+ConfigASDK.ps1 (updated for asdk build 1.0.171122.1)
 ==============
 Description
 -----------
@@ -18,7 +18,7 @@ This include :
 * AppService Resource Provider sources download to c:\Temp\appservice and certificate generations
 * Set new default Quotas for Compute, Network, Storage and keyvault
 * Create a simple offer and plan to provide IaaS capabilities to tenants
-* install usefull ASDK Host apps via Chocolatery (Visual Studio Code - putty - WinSCP - Chrome - Azure CLI)
+* install usefull ASDK Host apps via Chocolatey (Visual Studio Code - putty - WinSCP - Chrome - Azure CLI)
 
 Instructions
 ------------
