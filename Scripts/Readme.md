@@ -1,4 +1,4 @@
-ConfigASDK.ps1 (updated for asdk build 20170928.3)
+ConfigASDK.ps1 (updated for asdk build 1.0.171122.1)
 ==============
 Description
 -----------
@@ -18,6 +18,7 @@ This include :
 * AppService Resource Provider sources download to c:\Temp\appservice and certificate generations
 * Set new default Quotas for Compute, Network, Storage and keyvault
 * Create a simple offer and plan to provide IaaS capabilities to tenants
+* install usefull ASDK Host apps via Chocolatey (Visual Studio Code - putty - WinSCP - Chrome - Azure CLI)
 
 Instructions
 ------------
@@ -29,7 +30,7 @@ Instructions
 		-rppassword "YourPassword"; this will be the administrator password set for each vm deployed for PaaS services
 		-ISOPath "c:\xxx\xx.iso" ; specify the path to your Windows Server 2016 Datacenter evaluation iso file
 		
-* You will be prompted for credentials twice. (for azurestackadmin account and for your service admin account if AAD)
+* You will be prompted for credentials twice. (for azurestackadmin account and for your service admin account if AAD or azurestack\cloudadmin if ADFS)
 * mysqlrp and sqlrp administrator account will be "cloudadmin". These logins are also applicable for hosting servers.
 * fileserver vm for appservice will use fileshareowner as administrator account
 
