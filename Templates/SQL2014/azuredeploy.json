@@ -35,7 +35,7 @@
         "metadata": {
           "description": "The location of resources that the script is dependent on such as linked templates and DSC modules"
         },
-        "defaultValue": "https://raw.githubusercontent.com/alainv-msft/Azure-Stack/master/Templates/SQL2014/"
+        "defaultValue": "https://github.com/ukinahan/Azure-Stack/tree/master/Templates/SQL2014"
 
       },
         "vmSize": {
